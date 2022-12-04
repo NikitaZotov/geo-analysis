@@ -51,20 +51,25 @@ median <- function (w, group_width) {
     return(value)
 }
 
+Pearson_skewness_factor <- function (m, me, rmsv) {
+    value <- 3 * (m - me) / rmsv
+    return(value)
+}
+
 dispersion <- function (x, m) {
     value <- sum((x - m) ^ 2) / length(x)
     return(value)
 }
 
-ranged_dispersion <- function (w, group_width, m) {
-    ranged_table <- range_table(w, group_width, m)
+ranged_dispersion <- function (w, group_width, x) {
+    ranged_table <- range_table(w, group_width, x)
 
     c <- (ranged_table$begin + ranged_table$end) / 2
     m <- ranged_table$total
-    average_c <- average(rep(1, length(c)), c)
+    average_c <- sum(c) / length(c)
     sum_m <- sum(m)
 
-    value <- (sum((c ^ 2) * m) - sum_m * (average_c ^ 2)) / sum_m
+    value <- (sum((c ^ 2) * m) - (average_c ^ 2) * sum_m) / sum_m
     return(value)
 }
 
@@ -74,7 +79,7 @@ root_mean_square_deviation <- function (x, m) {
 }
 
 variation <- function (r, m) {
-    value <- r / m * 100
+    value <- (r / m) * 100
     return (value)
 }
 

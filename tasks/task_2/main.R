@@ -20,9 +20,11 @@ m
 r_m <- ranged_average(w, group_width, x)
 r_m
 
+# мода
 ma <- moda(w, group_width)
 ma
 
+# медиана
 me <- median(w, group_width)
 me
 
@@ -35,15 +37,18 @@ r_d <- ranged_dispersion(w, group_width, x)
 r_d
 
 # среднее квадратичное отклонение
-rmsv <- root_mean_square_deviation(x, m)
+rmsv <- root_mean_square_deviation(x, r_m)
 rmsv
 
+p_sk_f <- Pearson_skewness_factor(r_m, me, rmsv)
+p_sk_f
+
 # коэффициент вариации
-v <- variation(rmsv, m)
+v <- variation(rmsv, r_m)
 v
 
 # среднее абсолютное отклонение
-rmav <- root_mean_absolute_deviation(x, m)
+rmav <- root_mean_absolute_deviation(x, r_m)
 rmav
 
 # размах

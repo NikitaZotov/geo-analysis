@@ -4,7 +4,7 @@ source("lib/tables.R")
 #' @param w - вектор весов наблюдений
 #' @param x - вектор наблюдений
 #' @returns Значение величины математического ожидания вектора наблюдей x c весами из вектора w
-expected_value <- function (w, x) {
+average <- function (w, x) {
     value <- sum(w * x) / sum(w)
     return(value)
 }
@@ -15,13 +15,13 @@ expected_value <- function (w, x) {
 #' @param group_lenth - длина группы весов наблюдений из вектора w
 #' @param x - вектор наблюдений
 #' @returns Значение величины математического ожидания вектора наблюдей x c весами из вектора w
-ranged_expected_value <- function (w, group_lenth, x) {
+ranged_average <- function (w, group_lenth, x) {
     ranged_table <- range_table(w, group_lenth, x)
 
-    w <- (ranged_table$begin + ranged_table$end) / 2
+    c <- (ranged_table$begin + ranged_table$end) / 2
     m <- ranged_table$total
 
-    value <- sum(w * m) / sum(m)
+    value <- sum(c * m) / sum(m)
     return(value)
 }
 
@@ -30,7 +30,24 @@ dispersion <- function (x, group_length) {
     return(value)
 }
 
+ranged_dispersion <- function (w, group_lenth, m) {
+    ranged_table <- range_table(w, group_lenth, m)
+
+    c <- (ranged_table$begin + ranged_table$end) / 2
+    m <- ranged_table$total
+    average_c <- average(rep(1, length(c)), c)
+    sum_m <- sum(m)
+
+    value <- (sum((c ^ 2) * m) - sum_m * average_c) / sum_m
+    return(value)
+}
+
 root_mean_square_deviation <- function (x, group_length) {
     value <- sqrt(dispersion(x, group_length))
     return(value)
+}
+
+variation <- function (r, m) {
+    value <- r / m
+    return (value)
 }

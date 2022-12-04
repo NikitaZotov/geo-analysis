@@ -5,14 +5,20 @@ source("lib/statistics.R")
 table <- fread("data/copper_content_samples.csv")
 table <- table[order(table$percentage),]
 
-e_value <- expected_value(table$percentage, table$length)
-e_value
+m <- average(table$percentage, table$length)
+m
 
-r_e_value <- ranged_expected_value(table$percentage, 3, table$length)
-r_e_value
+r_m <- ranged_average(table$percentage, 3, table$length)
+r_m
 
-dispersion <- dispersion(table$length, e_value)
-dispersion
+d <- dispersion(table$length, m)
+d
 
-rmsv <- root_mean_square_deviation(table$length, e_value)
+r_d <- ranged_dispersion(table$percentage, 3, table$length)
+r_d
+
+rmsv <- root_mean_square_deviation(table$length, m)
 rmsv
+
+v <- variation(rmsv, m)
+v

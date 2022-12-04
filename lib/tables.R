@@ -1,8 +1,13 @@
-range_table <- function (rangable, range_length, summarizable) {
+sort_table <- function (table, sorted_by) {
+    value <- table[order(sorted_by),]
+    return(value)
+}
+
+range_table <- function (rangable, group_width, summarizable) {
     ranged_table <- data.frame()
 
     begin_range_point <- 0
-    end_range_point <- range_length
+    end_range_point <- group_width
     sum <- 0
     j <- 0
     rangable_length <- length(rangable)
@@ -14,7 +19,7 @@ range_table <- function (rangable, range_length, summarizable) {
             ranged_table <- rbind(ranged_table, new_row)
 
             begin_range_point <- end_range_point
-            end_range_point <- end_range_point + range_length
+            end_range_point <- end_range_point + group_width
 
             sum <- 0
             j <- j + 1

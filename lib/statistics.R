@@ -25,6 +25,14 @@ ranged_average <- function (w, group_width, x) {
     return(value)
 }
 
+moda <- function (w, group_width) {
+    ranged_table <- frequent_table(w, group_width)
+
+    print(ranged_table)
+
+    return(0)
+}
+
 dispersion <- function (x, m) {
     value <- sum((x - m) ^ 2) / length(x)
     return(value)
@@ -38,16 +46,26 @@ ranged_dispersion <- function (w, group_width, m) {
     average_c <- average(rep(1, length(c)), c)
     sum_m <- sum(m)
 
-    value <- (sum((c ^ 2) * m) - sum_m * average_c) / sum_m
+    value <- (sum((c ^ 2) * m) - sum_m * (average_c ^ 2)) / sum_m
     return(value)
 }
 
-root_mean_square_deviation <- function (d) {
-    value <- sqrt(d)
+root_mean_square_deviation <- function (x, m) {
+    value <- sqrt(sum((x - m) ^ 2) / length(x))
     return(value)
 }
 
 variation <- function (r, m) {
     value <- r / m * 100
     return (value)
+}
+
+root_mean_absolute_deviation <- function (x, m) {
+    value <- sum(abs(x - m)) / length(x)
+    return(value)
+}
+
+range <- function(x) {
+    value <- max(x) - min(x)
+    return(value)
 }

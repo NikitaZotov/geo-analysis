@@ -29,9 +29,19 @@ r_d <- ranged_dispersion(w, group_width, x)
 r_d
 
 # среднее квадратичное отклонение
-rmsv <- root_mean_square_deviation(d)
+rmsv <- root_mean_square_deviation(x, m)
 rmsv
 
 # коэффициент вариации
 v <- variation(rmsv, m)
 v
+
+# среднее абсолютное отклонение
+rmav <- root_mean_absolute_deviation(x, m)
+rmav
+
+# размах
+range <- range(x)
+range
+
+moda(w, group_width)

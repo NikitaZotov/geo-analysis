@@ -24,3 +24,13 @@ ranged_expected_value <- function (w, group_lenth, x) {
     value <- sum(w * m) / sum(m)
     return(value)
 }
+
+dispersion <- function (x, group_length) {
+    value <- sum(x - group_length) / length(x)
+    return(value)
+}
+
+root_mean_square_deviation <- function (x, group_length) {
+    value <- sqrt(dispersion(x, group_length))
+    return(value)
+}

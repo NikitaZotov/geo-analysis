@@ -48,6 +48,6 @@ root_mean_square_deviation <- function (disp) {
 }
 
 variation <- function (r, m) {
-    value <- r / m
+    value <- r / m * 100
     return (value)
 }

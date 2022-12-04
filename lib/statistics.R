@@ -28,9 +28,27 @@ ranged_average <- function (w, group_width, x) {
 moda <- function (w, group_width) {
     ranged_table <- frequent_table(w, group_width)
 
-    print(ranged_table)
+    frequencies <- ranged_table$observation_frequency
+    max_frequency_index <- which.max(frequencies)
+    d_a <- frequencies[max_frequency_index] - frequencies[max_frequency_index - 1]
+    d_b <- frequencies[max_frequency_index] - frequencies[max_frequency_index + 1]
+    down_edge <- ranged_table$begin[max_frequency_index]
 
-    return(0)
+    value <- down_edge + d_a / (d_a + d_b) * group_width
+    return(value)
+}
+
+median <- function (w, group_width) {
+    ranged_table <- frequent_table(w, group_width)
+
+    frequencies <- ranged_table$observation_frequency
+    max_frequency_index <- which.max(frequencies)
+    F <- ranged_table$observations[max_frequency_index - 1]
+    f <- ranged_table$observation_frequency[max_frequency_index]
+    down_edge <- ranged_table$begin[max_frequency_index]
+
+    value <- down_edge + (length(w) / 2 - F) / f * group_width
+    return(value)
 }
 
 dispersion <- function (x, m) {

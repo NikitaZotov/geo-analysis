@@ -69,6 +69,6 @@ frequent_table <- function (rangable, group_width) {
         }
     }
 
-    colnames(ranged_table) <- c("number", "begin", "end", "observation_frequency",  "observation_frequency")
+    colnames(ranged_table) <- c("number", "begin", "end", "observation_frequency",  "observations")
     return(ranged_table)
 }

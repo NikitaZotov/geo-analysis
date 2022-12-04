@@ -10,7 +10,7 @@ w <- table$percentage
 # вектор наблюдений
 x <- table$length
 # ширина группы вессов наблюдений
-group_width <- 3
+group_width <- 1.8
 
 # среднее значение
 m <- average(w, x)
@@ -19,6 +19,12 @@ m
 # среднее значение по интервалам
 r_m <- ranged_average(w, group_width, x)
 r_m
+
+ma <- moda(w, group_width)
+ma
+
+me <- median(w, group_width)
+me
 
 # дисперсия
 d <- dispersion(x, m)
@@ -43,5 +49,3 @@ rmav
 # размах
 range <- range(x)
 range
-
-moda(w, group_width)

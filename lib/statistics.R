@@ -25,8 +25,8 @@ ranged_average <- function (w, group_width, x) {
     return(value)
 }
 
-dispersion <- function (x, average) {
-    value <- sum(x - average) / length(x)
+dispersion <- function (x, m) {
+    value <- sum((x - m) ^ 2) / length(x)
     return(value)
 }
 
@@ -42,8 +42,8 @@ ranged_dispersion <- function (w, group_width, m) {
     return(value)
 }
 
-root_mean_square_deviation <- function (disp) {
-    value <- sqrt(disp)
+root_mean_square_deviation <- function (d) {
+    value <- sqrt(d)
     return(value)
 }
 

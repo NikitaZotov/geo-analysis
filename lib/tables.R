@@ -1,6 +1,5 @@
-range_table <- function (table, rangable, range_length, summarizable) {
-    table_cols <- colnames(table)
-    ranged_table <- data.frame(matrix(nrow = 0, ncol = length(table_cols)))
+range_table <- function (rangable, range_length, summarizable) {
+    ranged_table <- data.frame()
 
     begin_range_point <- 0
     end_range_point <- range_length

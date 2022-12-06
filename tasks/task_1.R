@@ -17,7 +17,7 @@ hist(airquality$Temp)
 
 # Столбиковая диаграмма распределения вероятности
 hist(airquality$Temp, freq = FALSE, col = "lightblue",
-     ylab = "Плотность вероятности", xlab = "Температура")
+     ylab = "Плотность вероятности", xlab = "Температура", main = "Гистограмма температуры")
 
 # Кривая плотности вероятности + столбиковая диаграмма
 lines(density(airquality$Temp))

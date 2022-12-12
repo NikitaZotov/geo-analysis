@@ -2,7 +2,7 @@ library(data.table)
 
 source("lib/statistics.R")
 
-table <- fread("data/copper_content_samples.csv")
+table <- fread("tasks/task_2/data/copper_content_samples.csv")
 table <- sort_table(table, table$percentage)
 
 # вектор весов наблюдений
